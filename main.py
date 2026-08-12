@@ -28,5 +28,17 @@ def organize_directory(directory:Path) -> None:
             source = directory / item.name
             destination = directory / get_category_for_extension(extension, extensions) / item.name
             move_file(source, destination)
-            
+            print("Item moved succesfully!")
+if __name__ == "__main__":
+    print("This is a file sorting script")
+    home_dir = Path.home()
+    downloads = home_dir / "Downloads"
+
+    set_up_directory(downloads, extensions)
+
+    organize_directory(downloads)
+
+
+
+
 
