@@ -12,5 +12,10 @@ def set_up_directory(directory: Path, extensions: dict) -> None:
         target_path = directory / folder
 
         target_path.mkdir(parents=True, exist_ok=True)
+def get_category_for_extension(extension: str, categories: dict) -> str:
+
+    for value in categories:
+        if extension in categories[value]:
+            return(value)
 
 
