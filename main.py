@@ -1,9 +1,9 @@
-from pathlib import Path
 import shutil
+from pathlib import Path
 
-extensions = {"Images": [".jpg", ".gif", "png"], "Documents": [".pdf"]}
+extensions: dict[str,list[str]] = {"Images": [".jpg", ".gif", ".png"], "Documents": [".pdf"]}
 
-def set_up_directory(directory: Path, extensions: dict) -> None:
+def set_up_directory(directory: Path, extensions: dict[str,list[str]]) -> None:
 
     folders_to_ensure = list(extensions.keys())
 
@@ -12,14 +12,15 @@ def set_up_directory(directory: Path, extensions: dict) -> None:
         target_path = directory / folder
 
         target_path.mkdir(parents=True, exist_ok=True)
-def get_category_for_extension(extension: str, categories: dict) -> str:
+def get_category_for_extension(extension: str, extensions: dict[str,list[str]]) -> str:
 
-    for value in categories:
-        if extension in categories[value]:
-            return(value)
+    for key, value in extensions.items():
+        if extension in value:
+            return(key)
+    return("Other")
 def move_file(directory:Path, destination_directory:Path) -> None:
 
-    shutil.move(directory, destination_directory)
+    _ = shutil.move(directory, destination_directory)
 
 def organize_directory(directory:Path) -> None:
     for item in directory.iterdir():
