@@ -17,5 +17,8 @@ def get_category_for_extension(extension: str, categories: dict) -> str:
     for value in categories:
         if extension in categories[value]:
             return(value)
+def move_file(directory:Path, destination_directory:Path) -> None:
+
+    shutil.move(directory, destination_directory)
 
 
