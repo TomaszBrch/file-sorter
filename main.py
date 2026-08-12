@@ -7,6 +7,8 @@ def set_up_directory(directory: Path, extensions: dict[str,list[str]]) -> None:
 
     folders_to_ensure = list(extensions.keys())
 
+    folders_to_ensure.append("Other")
+
     for folder in folders_to_ensure:
 
         target_path = directory / folder
