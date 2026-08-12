@@ -21,4 +21,12 @@ def move_file(directory:Path, destination_directory:Path) -> None:
 
     shutil.move(directory, destination_directory)
 
+def organize_directory(directory:Path) -> None:
+    for item in directory.iterdir():
+        if item.is_file():
+            extension = item.suffix
+            source = directory / item.name
+            destination = directory / get_category_for_extension(extension, extensions) / item.name
+            move_file(source, destination)
+            
 
