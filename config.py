@@ -3,7 +3,7 @@ from pathlib import Path
 
 default_config: dict[str, list[str]] = {
         "Images" : [".jpg", ".gif", ".png"],
-        "Documents" : [".pdf", ".docx", ".pages"],
+        "Documents" : [".pdf", ".docx", ".pages", ".txt"],
         "Audio" : [".mp3", ".wav"],
         "Video" : [".mp4", ".mov"],
         "Installers" : [".exe", ".dmg"],
