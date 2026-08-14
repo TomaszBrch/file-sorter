@@ -1,7 +1,9 @@
 import shutil
 from pathlib import Path
 
-extensions: dict[str,list[str]] = {"Images": [".jpg", ".gif", ".png"], "Documents": [".pdf"]}
+#extensions: dict[str,list[str]] = {"Images": [".jpg", ".gif", ".png"], "Documents": [".pdf"]}
+from config import load_or_create_config
+
 
 def set_up_directory(directory: Path, extensions: dict[str,list[str]]) -> None:
 
@@ -36,6 +38,10 @@ if __name__ == "__main__":
     print("This is a file sorting script")
     home_dir: Path = Path.home()
     downloads: Path = home_dir / "Downloads"
+
+    config_path:Path = Path("config.json")
+
+    extensions: dict[str, list[str]] = load_or_create_config(config_path=config_path)
 
     set_up_directory(downloads, extensions)
 
