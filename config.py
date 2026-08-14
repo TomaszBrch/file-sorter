@@ -19,10 +19,10 @@ def load_or_create_config(config_path : Path) -> dict[str,list[str]]:
             json.dump(obj=default_config, fp=file, indent=4)
         return default_config
     with config_path.open("r") as file:
-        data = json.load(fp=file)
+        data = json.load(fp=file)  # pyright: ignore[reportAny]
 
         if isinstance(data, dict):
-            return data
+            return data  # pyright: ignore[reportUnknownVariableType]
         else:
             print("Warning: config.json is improperly formatted. Using defaults")
             return default_config
